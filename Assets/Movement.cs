@@ -15,16 +15,15 @@ public class Movement : MonoBehaviour
     private Piece piece;
     // private Pieces piece;
     // private ChessManager chessManager;
-
+    private Vector2Int startPos; 
     void Start()
     {
-        piece = new Pawn(new Vector2Int(0,1),PieceColor.White,PieceName.Pawn);
+        FindNearesSquere(out startPos);
+
+        piece = new Pawn(new Vector2Int((int)Math.Floor(this.gameObject.transform.position.x),(int)Math.Floor(this.gameObject.transform.position.y)), GetPieceColor(), GetPieceName());
         // piece = GetComponent<Pieces>();
         // chessManager = ChessManager.Instance;    //FindObjectOfType<ChessManager>();  // Assumes there's only one ChessManager in the scene
     }
-
-
-    // Update is called once per frame
     void Update()
     {
         if (isBeingHeld)
@@ -39,6 +38,7 @@ public class Movement : MonoBehaviour
 
     private void OnMouseDown()
     {
+        Debug.Log("piece is " + piece.Color + " and it's" + piece.Name);
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 mousePos;
@@ -56,10 +56,11 @@ public class Movement : MonoBehaviour
         isBeingHeld = false;
         FindNearesSquere(out newPos);
 
-        if (nearestSquare != null && piece != null/*&& piece != null*/)
+        if (nearestSquare != null && piece != null)
         {
             if (piece.IsAValidMove(newPos))
             {
+                SnapToSquare(nearestSquare);
                 piece.position = newPos;
             }
             else
@@ -71,28 +72,19 @@ public class Movement : MonoBehaviour
 
             // if (chessManager.IsValidMove(currentPos, newPos, piece))
             // {
-                // Debug.Log("Snapping to square: " + nearestSquare.name);
-                // SnapToSquare(nearestSquare);
+            // Debug.Log("Snapping to square: " + nearestSquare.name);
+            // SnapToSquare(nearestSquare);
             // }
             // else
             // {
-                // Debug.Log("Invalid move.");
-                // SnapToOriginalPosition();
+            // Debug.Log("Invalid move.");
+            // SnapToOriginalPosition();
             // }
         }
         else
         {
             Debug.Log("No nearest square found oorrr piece is not asigned");
             SnapToOriginalPosition();
-        }
-
-        if (nearestSquare != null)
-        {
-            SnapToSquare(nearestSquare);
-        }
-        else
-        {
-            Debug.Log(selectedObject.name);
         }
     }
     private void FindNearesSquere(out Vector2Int newPos)
@@ -105,15 +97,14 @@ public class Movement : MonoBehaviour
         {
             if (collider.CompareTag("Square"))
             {
-                Vector2 newposV2 = collider.gameObject.transform.position; 
+                Vector2 newposV2 = collider.gameObject.transform.position;
                 nearestSquare = collider.gameObject;
-                newPos = new Vector2Int((int)Math.Floor(newposV2.x),(int)Math.Floor(newposV2.y));
-                Debug.Log("new position is " + newPos);
+                newPos = new Vector2Int((int)Math.Floor(newposV2.x), (int)Math.Floor(newposV2.y));
                 return;
             }
         }
 
-        newPos = new Vector2Int(-1,-1);
+        newPos = new Vector2Int(-1, -1);
         nearestSquare = null;
     }
     private void SnapToSquare(GameObject square)
@@ -122,16 +113,73 @@ public class Movement : MonoBehaviour
     }
     private void SnapToOriginalPosition()
     {
-        Vector2Int currentPos = piece.position;
+        Vector2 currentPos = piece.position;
         if (currentPos != new Vector2Int(-1, -1))
         {
-            transform.position = new Vector3(currentPos.x, currentPos.y, -2f);
+            selectedObject = this.gameObject;
+            selectedObject.transform.position = new Vector3(currentPos.x + 0.5f, currentPos.y + 0.5f, -2f);
         }
         else
         {
             // Debug.LogError("Piece position is not valid!");
             Debug.LogError("curent position of that piece is (-1, -1)");
-        }    
+        }
+    }
+    private PieceName GetPieceName()
+    {
+        string name = this.gameObject.name;
+        string result = "";
+        
+        for (int i = name.Length - 1 - 7; i >= 0 ; i--)
+        {
+            if (name[i] == ' ')
+            {
+                break;
+            }
+            result = name[i] + result;
+        }
+
+        switch (result)
+        {
+            case "pawn":
+                return PieceName.Pawn;
+            case "rook":
+                return PieceName.Rook;
+            case "knight":
+                return PieceName.Knight;
+            case "bishop":
+                return PieceName.Bishop;
+            case "queen":
+                return PieceName.Queen;
+            case "king":
+                return PieceName.King;
+            default:
+                return PieceName.Queen;
+        }
+    }
+    private PieceColor GetPieceColor()
+    {
+        string name = gameObject.name;
+        string res = "";
+
+        for (int i = 0; i < name.Length; i++)
+        {
+            if (name[i] == ' ')
+            {
+                break;
+            }
+            res += name[i]; 
+        }
+
+        switch (res)
+        {
+            case "white":
+                return PieceColor.White;
+            case "black":
+                return PieceColor.Black;
+            default:
+                return PieceColor.White;
+        }
     }
 }
 

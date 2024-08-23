@@ -14,12 +14,11 @@ public class Pawn : Piece
         {
             if (newPos == position + posibleMove)
             {
-                Debug.LogWarning(newPos + "=" + position + "+" + posibleMove);
-                Debug.Log("VALID move");
+                // Debug.Log("VALID move");
                 return true;
             }
         }
-        Debug.LogError("NOT a valid move" + position);
+        // Debug.Log("NOT a valid move" + position);
         return false;
     }
     private List<Vector2Int> PosibleMoves()
