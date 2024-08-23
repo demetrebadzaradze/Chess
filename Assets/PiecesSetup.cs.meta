@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 318d7241f76d15a4b8794103f11aaa19
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Blackking: {fileID: 4159575480438365750, guid: a6bf20cc968859245987059537f5098a, type: 3}
+  - Whiteking: {fileID: 4451747343072234605, guid: 9e7bdee4b6dfa0e429edc3f8b2585d82, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
