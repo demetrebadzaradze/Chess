@@ -26,6 +26,7 @@ public class Movement : MonoBehaviour
     }
     void Update()
     {
+        GameManager.PrintTheTurn();
         if (isBeingHeld)
         {
             Vector3 mousePos;
@@ -38,7 +39,6 @@ public class Movement : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("piece is " + piece.Color + " and it's" + piece.Name);
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 mousePos;

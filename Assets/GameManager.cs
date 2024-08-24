@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    static public int Turn = 0;
 
-    // Update is called once per frame
-    void Update()
+    public static void PrintTheTurn()
     {
-        
-    }
+        Debug.Log(Turn);
+    } 
+    
 }
