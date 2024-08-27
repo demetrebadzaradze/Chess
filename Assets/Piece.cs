@@ -19,4 +19,12 @@ public abstract class Piece
     {
         return false;
     }
+    public bool IsAValidTurn()
+    {
+        if (Color == GameManager.Turn)
+        {
+            return true;
+        }
+        return false;
+    }
 }

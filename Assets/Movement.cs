@@ -58,9 +58,11 @@ public class Movement : MonoBehaviour
 
         if (nearestSquare != null && piece != null)
         {
-            if (piece.IsAValidMove(newPos))
+            if (piece.IsAValidMove(newPos) && piece.IsAValidTurn())
             {
                 SnapToSquare(nearestSquare);
+                GameManager.EndOfTheTurn(piece.Color);
+                GameManager.PrintTheTurn();
                 piece.position = newPos;
             }
             else

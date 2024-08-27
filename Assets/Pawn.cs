@@ -15,7 +15,6 @@ public class Pawn : Piece
         {
             if (newPos == position + posibleMove)
             {   // Debug.Log("VALID move");
-                GameManager.Turn = 1;
                 moveCount++;
 
                 return IsOutsideOfBorder(newPos);
