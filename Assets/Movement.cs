@@ -22,7 +22,7 @@ public class Movement : MonoBehaviour
 
         piece = new Rook(new Vector2Int((int)Math.Floor(this.gameObject.transform.position.x),(int)Math.Floor(this.gameObject.transform.position.y)), GetPieceColor(), GetPieceName());
 
-
+        
         // piece = GetComponent<Pieces>();
         // chessManager = ChessManager.Instance;    //FindObjectOfType<ChessManager>();  // Assumes there's only one ChessManager in the scene
     }
@@ -50,8 +50,6 @@ public class Movement : MonoBehaviour
             selectedObject = this.gameObject;
 
             isBeingHeld = true;
-
-            piece.PrintMoves();
         }
     }
     private void OnMouseUp()

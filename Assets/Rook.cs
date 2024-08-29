@@ -17,6 +17,7 @@ public class Rook : Piece
                 return IsOutsideOfBorder(newPos);
                 // return true;
             }
+            Debug.Log(posibleMove);
         }
         Debug.Log("NOT a valid move" + position);
         return false;
