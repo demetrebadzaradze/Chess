@@ -21,12 +21,12 @@ public class TileSpawner : MonoBehaviour
                 if (ChessManager.tilePosition[i, j] == 1)
                 {
                     GameObject tile = Instantiate(WhiteTile, new Vector3(Xposition, Yposition, -1), transform.rotation);
-                    tile.name = i.ToString() + j.ToString() + "Tile";
+                    tile.name = j.ToString() + i.ToString() + tile.name;
                 }
                 else
                 {
                     GameObject tile = Instantiate(BlackTile, new Vector3(Xposition, Yposition, -1), transform.rotation);
-                    tile.name = i.ToString() + j.ToString() + "Tile";
+                    tile.name = j.ToString() + i.ToString() + tile.name;
                 }
 
                 Console.WriteLine(Xposition.ToString(), Yposition.ToString());

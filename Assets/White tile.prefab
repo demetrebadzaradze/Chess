@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7881019994628192381}
   - component: {fileID: 3900042104724848311}
   - component: {fileID: -6899838443093144364}
+  - component: {fileID: 4860290597456269826}
   m_Layer: 0
   m_Name: White tile
   m_TagString: Square
@@ -130,3 +131,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.66, y: 0.66}
   m_EdgeRadius: 0
+--- !u!114 &4860290597456269826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8365359566302519194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7caec29c88eae409ced741b8347eb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

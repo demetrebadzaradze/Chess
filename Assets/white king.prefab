@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -5839020015028550968}
   m_Layer: 0
   m_Name: white king
-  m_TagString: Untagged
+  m_TagString: Piece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175,9 +175,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shortName: 0
-  Name: 0
-  playerCollor: 
   playerNuber: 0
-  Xcordinates: 0
-  Ycordinates: 0
-  king: {fileID: 4451747343072234605}
