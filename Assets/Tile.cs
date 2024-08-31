@@ -11,7 +11,8 @@ public class Tile : MonoBehaviour
         (
             Squere.WhatColorIsIt(gameObject),
             Squere.IsOcupied(gameObject),
-            Squere.WhatsThePosition(gameObject)
+            Squere.WhatsThePosition(gameObject),
+            this.gameObject
         );
 
         Debug.Log(tile.color + " ____ " + tile.ocupied + " ____ " + tile.position + " ---------- " + gameObject.name + " ____ " + gameObject.transform.position);

@@ -20,7 +20,14 @@ public class Movement : MonoBehaviour
     {
         FindNearesSquere(out startPos);
 
-        piece = new Rook(new Vector2Int((int)Math.Floor(this.gameObject.transform.position.x),(int)Math.Floor(this.gameObject.transform.position.y)), GetPieceColor(), GetPieceName());
+        piece = new Rook
+        (
+            new Vector2Int(
+                (int)Math.Floor(this.gameObject.transform.position.x),
+                (int)Math.Floor(this.gameObject.transform.position.y)
+                ),
+            GameManager.GetPieceColor(gameObject), 
+            GameManager.GetPieceName(gameObject));
         
         // piece = GetComponent<Pieces>();
         // chessManager = ChessManager.Instance;    //FindObjectOfType<ChessManager>();  // Assumes there's only one ChessManager in the scene
@@ -70,19 +77,6 @@ public class Movement : MonoBehaviour
             {
                 SnapToOriginalPosition();
             }
-            // Vector2Int currentPos = chessManager.GetBoardPosition(this.gameObject);
-            // Vector2Int newPos = chessManager.GetBoardPosition(nearestSquare);
-
-            // if (chessManager.IsValidMove(currentPos, newPos, piece))
-            // {
-            // Debug.Log("Snapping to square: " + nearestSquare.name);
-            // SnapToSquare(nearestSquare);
-            // }
-            // else
-            // {
-            // Debug.Log("Invalid move.");
-            // SnapToOriginalPosition();
-            // }
         }
         else
         {
@@ -126,62 +120,6 @@ public class Movement : MonoBehaviour
         {
             // Debug.LogError("Piece position is not valid!");
             Debug.LogError("curent position of that piece is (-1, -1)");
-        }
-    }
-    private PieceName GetPieceName()
-    {
-        string name = this.gameObject.name;
-        string result = "";
-        
-        for (int i = name.Length - 1 - 7; i >= 0 ; i--)
-        {
-            if (name[i] == ' ')
-            {
-                break;
-            }
-            result = name[i] + result;
-        }
-
-        switch (result)
-        {
-            case "pawn":
-                return PieceName.Pawn;
-            case "rook":
-                return PieceName.Rook;
-            case "knight":
-                return PieceName.Knight;
-            case "bishop":
-                return PieceName.Bishop;
-            case "queen":
-                return PieceName.Queen;
-            case "king":
-                return PieceName.King;
-            default:
-                return PieceName.Queen;
-        }
-    }
-    private PieceColor GetPieceColor()
-    {
-        string name = gameObject.name;
-        string res = "";
-
-        for (int i = 0; i < name.Length; i++)
-        {
-            if (name[i] == ' ')
-            {
-                break;
-            }
-            res += name[i]; 
-        }
-
-        switch (res)
-        {
-            case "white":
-                return PieceColor.White;
-            case "black":
-                return PieceColor.Black;
-            default:
-                return PieceColor.White;
         }
     }
 }
