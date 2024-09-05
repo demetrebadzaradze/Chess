@@ -13,6 +13,7 @@ public class Movement : MonoBehaviour
     private GameObject nearestSquare = null;
     private GameObject selectedObject = null;
     private Piece piece;
+    private Squere tile;
     // private Pieces piece;
     // private ChessManager chessManager;
     private Vector2Int startPos; 
@@ -96,6 +97,7 @@ public class Movement : MonoBehaviour
             {
                 Vector2 newposV2 = collider.gameObject.transform.position;
                 nearestSquare = collider.gameObject;
+                tile = new Squere(nearestSquare);
                 newPos = new Vector2Int((int)Math.Floor(newposV2.x), (int)Math.Floor(newposV2.y));
                 return;
             }

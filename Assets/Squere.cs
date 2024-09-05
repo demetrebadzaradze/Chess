@@ -21,6 +21,13 @@ public class Squere
         Tile = tile;
     }
 
+    public Squere(GameObject tileobj)
+    {
+        ocupied = IsOcupied(tileobj);
+        color = WhatColorIsIt(tileobj);
+        position = WhatsThePosition(tileobj);
+        Tile = tileobj;
+    }
     public void GetPiece()
     {
         if (piece == null)
