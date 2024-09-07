@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+// here we need to ad sqere class objs to determine kild and no more piece paces
     public enum PieceName { King, Queen, Bishop, Knight, Rook, Pawn }
     public enum ShortPieceName { K, Q, R, B, N, }
     public enum PieceColor { White, Black }

@@ -28,6 +28,7 @@ public class Squere
         position = WhatsThePosition(tileobj);
         Tile = tileobj;
     }
+    
     public void GetPiece()
     {
         if (piece == null)
