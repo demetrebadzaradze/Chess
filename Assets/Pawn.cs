@@ -14,11 +14,10 @@ public class Pawn : Piece
         foreach (Vector2Int posibleMove in PosibleMoves())
         {
             if (newPos == position + posibleMove)
-            {   // Debug.Log("VALID move");
+            {                                           // Debug.Log("VALID move");
                 moveCount++;
 
-                return IsOutsideOfBorder(newPos);
-                // return true;
+                return IsOutsideOfBorder(newPos);       // return true;
             }
         }
         Debug.Log("NOT a valid move" + position);
@@ -26,14 +25,22 @@ public class Pawn : Piece
     }
     private List<Vector2Int> PosibleMoves()
     {
-        List<Vector2Int> moves = new List<Vector2Int>()
+        // Vector2Int posibleMove;
+        List<Vector2Int> moves = new List<Vector2Int>();
+
+        if (IsSquereOcupied(position + MoveBasedOnCoulor(new Vector2Int(0, 1))))
         {
-            MoveBasedOnCoulor(new Vector2Int(0,1))
-        };
+            moves.Add(MoveBasedOnCoulor(new Vector2Int(0, 1)));
+        }
+
+
 
         if (moveCount == 0)
         {
-            moves.Add(MoveBasedOnCoulor(new Vector2Int(0,2)));
+            if (IsSquereOcupied(position + MoveBasedOnCoulor(new Vector2Int(0, 2))))
+            {
+                moves.Add(MoveBasedOnCoulor(new Vector2Int(0, 2)));
+            }
         }
 
         return moves;
@@ -49,7 +56,7 @@ public class Pawn : Piece
     }
     private Vector2Int MoveBasedOnCoulor(Vector2Int move)
     {
-        if(Color == PieceColor.White)
+        if (Color == PieceColor.White)
         {
             return move;
         }
@@ -58,4 +65,5 @@ public class Pawn : Piece
             return new Vector2Int(move.x, -move.y);
         }
     }
+
 }

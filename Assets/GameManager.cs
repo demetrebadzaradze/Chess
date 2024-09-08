@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager
+public class GameManager : MonoBehaviour
 {
-    // static public int Turn = 0;
+    public/*private*/ static Squere[,] squeres = new Squere[8,8];
     static public PieceColor Turn = PieceColor.White;
     public static void EndOfTheTurn(PieceColor color)
     {
@@ -16,6 +16,14 @@ public class GameManager
         {
             Turn = PieceColor.White;
         }
+    }
+    // public static void ()
+    // {
+// 
+    // }
+    public static void IniSqueres(Squere squere)    //  try catch maybe BETTER
+    {
+        squeres[squere.position.x,squere.position.y] = squere;
     }
 
     public static void PrintTheTurn()
@@ -78,5 +86,9 @@ public class GameManager
             default:
                 return PieceName.Queen;
         }
+    }
+    void Update()
+    {
+
     }
 }

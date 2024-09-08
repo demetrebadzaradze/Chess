@@ -21,7 +21,7 @@ public class Movement : MonoBehaviour
     {
         FindNearesSquere(out startPos);
 
-        piece = new Rook
+        piece = new Pawn
         (
             new Vector2Int(
                 (int)Math.Floor(this.gameObject.transform.position.x),
@@ -61,9 +61,19 @@ public class Movement : MonoBehaviour
     }
     private void OnMouseUp()
     {
+        Vector2Int x;
         Vector2Int newPos;
         isBeingHeld = false;
         FindNearesSquere(out newPos);
+        FindNearesSquere(out x);
+
+//  i think any kinde of invalid movemant will show the posible moves that would be better
+        Debug.Log(" name is " + piece.Name + " ____ " + " and position is " + piece.position + " ________ " + "x = " + x + " ____ " + " newPos = " + newPos + " ____ " + piece.IsAValidTurn());
+
+        if (newPos == x && piece.IsAValidTurn())
+        {
+            Debug.Log("uuuummmmmm is there anyone here");
+        }
 
         if (nearestSquare != null && piece != null)
         {
@@ -72,7 +82,7 @@ public class Movement : MonoBehaviour
                 SnapToSquare(nearestSquare);
                 GameManager.EndOfTheTurn(piece.Color);
                 GameManager.PrintTheTurn();
-                piece.position = newPos;
+                piece.UpdatePosition(newPos);
             }
             else
             {
@@ -81,7 +91,7 @@ public class Movement : MonoBehaviour
         }
         else
         {
-            Debug.Log("No nearest square found oorrr piece is not asigned");
+            Debug.Log("No nearest square found oorrr piece is not asigned i donow");
             SnapToOriginalPosition();
         }
     }

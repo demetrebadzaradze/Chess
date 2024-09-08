@@ -5,6 +5,8 @@ using UnityEngine.UIElements;
 
 public abstract class Piece
 {
+    // here we need to add sqere class objs to determine kill and no more piece paces
+
     public PieceName Name;
     public PieceColor Color;
     public Vector2Int position;
@@ -27,4 +29,16 @@ public abstract class Piece
         }
         return false;
     }
+    public void UpdatePosition(Vector2Int newPosition)
+    {
+        position = newPosition;   
+    }
+    protected bool IsSquereOcupied(Vector2Int pos)
+    {
+        if(GameManager.squeres[pos.x,pos.y].ocupied)
+        {
+            return true;
+        }
+        return false;
+    }  
 }

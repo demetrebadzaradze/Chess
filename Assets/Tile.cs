@@ -14,8 +14,7 @@ public class Tile : MonoBehaviour
             Squere.WhatsThePosition(gameObject),
             this.gameObject
         );
-
-        Debug.Log(tile.color + " ____ " + tile.ocupied + " ____ " + tile.position + " ---------- " + gameObject.name + " ____ " + gameObject.transform.position);
+        GameManager.IniSqueres(tile);
     }
     void Update()
     {
