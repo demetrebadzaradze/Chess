@@ -22,7 +22,7 @@ public class Rook : Piece
         Debug.Log("NOT a valid move" + position);
         return false;
     }
-    private List<Vector2Int> PosibleMoves()
+    public override List<Vector2Int> PosibleMoves()
     {
         List<Vector2Int> moves = new List<Vector2Int>() { };
 

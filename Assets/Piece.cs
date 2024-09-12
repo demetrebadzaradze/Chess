@@ -47,12 +47,17 @@ public abstract class Piece : MonoBehaviour
         }
         return false;
     }  
+    void Start()
+    {
+        posibleMoveOverlay = Resources.Load("PosbleMoveOverlay") as GameObject;
+    }
     public void DrawPosibleMoves()
     {
         Debug.Log("drawing positions");
+        // Debug.Log(posibleMoveOverlay.transform.rotation);
         foreach (Vector2Int move in PosibleMoves())
         {
-            Instantiate(posibleMoveOverlay,new Vector3(move.x,move.x,-1), transform.rotation);
+            Instantiate(posibleMoveOverlay,new Vector3(move.x,move.x,5), new Quaternion(0,0,0,0));
         }
     }
 }

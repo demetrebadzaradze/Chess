@@ -14,7 +14,7 @@ public class Pawn : Piece
         foreach (Vector2Int posibleMove in PosibleMoves())
         {
             if (newPos == position + posibleMove)
-            {                                           // Debug.Log("VALID move");
+            {      
                 moveCount++;
 
                 return IsOutsideOfBorder(newPos);       // return true;
@@ -28,7 +28,7 @@ public class Pawn : Piece
         // Vector2Int posibleMove;
         List<Vector2Int> moves = new List<Vector2Int>();
 
-        if (IsSquereOcupied(position + MoveBasedOnCoulor(new Vector2Int(0, 1))))
+        if (!IsSquereOcupied(position + MoveBasedOnCoulor(new Vector2Int(0, 1))))
         {
             moves.Add(MoveBasedOnCoulor(new Vector2Int(0, 1)));
         }
@@ -37,7 +37,7 @@ public class Pawn : Piece
 
         if (moveCount == 0)
         {
-            if (IsSquereOcupied(position + MoveBasedOnCoulor(new Vector2Int(0, 2))))
+            if (!IsSquereOcupied(position + MoveBasedOnCoulor(new Vector2Int(0, 2))))
             {
                 moves.Add(MoveBasedOnCoulor(new Vector2Int(0, 2)));
             }

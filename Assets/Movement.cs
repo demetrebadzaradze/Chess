@@ -58,7 +58,7 @@ public class Movement : MonoBehaviour
 
             isBeingHeld = true;
 
-            piece.DrawPosibleMoves();
+            // piece.DrawPosibleMoves();
         }
     }
     private void OnMouseUp()
@@ -95,6 +95,7 @@ public class Movement : MonoBehaviour
         {
             Debug.Log("No nearest square found oorrr piece is not asigned i donow");
             SnapToOriginalPosition();
+            piece.DrawPosibleMoves();
         }
     }
     private void FindNearesSquere(out Vector2Int newPos)
