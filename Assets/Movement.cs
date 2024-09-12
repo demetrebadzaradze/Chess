@@ -57,6 +57,8 @@ public class Movement : MonoBehaviour
             selectedObject = this.gameObject;
 
             isBeingHeld = true;
+
+            piece.DrawPosibleMoves();
         }
     }
     private void OnMouseUp()
@@ -68,12 +70,12 @@ public class Movement : MonoBehaviour
         FindNearesSquere(out x);
 
 //  i think any kinde of invalid movemant will show the posible moves that would be better
-        Debug.Log(" name is " + piece.Name + " ____ " + " and position is " + piece.position + " ________ " + "x = " + x + " ____ " + " newPos = " + newPos + " ____ " + piece.IsAValidTurn());
+        // Debug.Log(" name is " + piece.Name + " ____ " + " and position is " + piece.position + " ________ " + "x = " + x + " ____ " + " newPos = " + newPos + " ____ " + piece.IsAValidTurn());
 
-        if (newPos == x && piece.IsAValidTurn())
-        {
-            Debug.Log("uuuummmmmm is there anyone here");
-        }
+        // if (newPos == x && piece.IsAValidTurn())
+        // {
+        //     Debug.Log("uuuummmmmm is there anyone here");
+        // }
 
         if (nearestSquare != null && piece != null)
         {

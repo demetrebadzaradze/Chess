@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public abstract class Piece
+public abstract class Piece : MonoBehaviour
 {
     // here we need to add sqere class objs to determine kill and no more piece paces
 
+    public GameObject posibleKillOverlay;
+    public GameObject posibleMoveOverlay;
     public PieceName Name;
     public PieceColor Color;
     public Vector2Int position;
@@ -20,6 +22,10 @@ public abstract class Piece
     public virtual bool IsAValidMove(Vector2Int movePos)
     {
         return false;
+    }
+    public virtual List<Vector2Int> PosibleMoves()
+    {
+        return new List<Vector2Int>{};
     }
     public bool IsAValidTurn()
     {
@@ -41,4 +47,12 @@ public abstract class Piece
         }
         return false;
     }  
+    public void DrawPosibleMoves()
+    {
+        Debug.Log("drawing positions");
+        foreach (Vector2Int move in PosibleMoves())
+        {
+            Instantiate(posibleMoveOverlay,new Vector3(move.x,move.x,-1), transform.rotation);
+        }
+    }
 }
