@@ -21,7 +21,7 @@ public class Movement : MonoBehaviour
     {
         FindNearesSquere(out startPos);
 
-        piece = new Pawn
+        piece = new Pawn        //rhis is monobehavior class and may be faultty without instantience
         (
             new Vector2Int(
                 (int)Math.Floor(this.gameObject.transform.position.x),
@@ -58,7 +58,7 @@ public class Movement : MonoBehaviour
 
             isBeingHeld = true;
 
-            // piece.DrawPosibleMoves();
+            piece.DrawPosibleMoves();
         }
     }
     private void OnMouseUp()
@@ -93,7 +93,7 @@ public class Movement : MonoBehaviour
         }
         else
         {
-            Debug.Log("No nearest square found oorrr piece is not asigned i donow");
+            Debug.Log($"No nearest square found {nearestSquare == null} oorrr piece is not asigned {piece == null} i donow");
             SnapToOriginalPosition();
             piece.DrawPosibleMoves();
         }

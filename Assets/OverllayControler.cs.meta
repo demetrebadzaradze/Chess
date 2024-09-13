@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: a8e79724d419f144ab7b9cb761a609c8
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - posibleMoveOverllay: {fileID: 1341435169818811924, guid: e3e2a4f06b51c884e91235653921e854, type: 3}
+  - posibleKillOverllay: {fileID: 2095714287948999658, guid: faefa9506f644a54e92d030b99dca560, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

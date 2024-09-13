@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public abstract class Piece : MonoBehaviour
+public abstract class Piece //: MonoBehaviour
 {
     // here we need to add sqere class objs to determine kill and no more piece paces
 
     public GameObject posibleKillOverlay;
     public GameObject posibleMoveOverlay;
+    private OverllayControler overllayControler;
     public PieceName Name;
     public PieceColor Color;
     public Vector2Int position;
@@ -18,6 +19,7 @@ public abstract class Piece : MonoBehaviour
         position = pos;
         Color = color;
         Name = name;
+        overllayControler = GameObject.FindObjectOfType<OverllayControler>();      //new OverllayControler();
     }
     public virtual bool IsAValidMove(Vector2Int movePos)
     {
@@ -49,15 +51,12 @@ public abstract class Piece : MonoBehaviour
     }  
     void Start()
     {
-        posibleMoveOverlay = Resources.Load("PosbleMoveOverlay") as GameObject;
+        //  posibleMoveOverlay = Resources.Load("PosbleMoveOverlay") as GameObject;
     }
     public void DrawPosibleMoves()
     {
         Debug.Log("drawing positions");
-        // Debug.Log(posibleMoveOverlay.transform.rotation);
-        foreach (Vector2Int move in PosibleMoves())
-        {
-            Instantiate(posibleMoveOverlay,new Vector3(move.x,move.x,5), new Quaternion(0,0,0,0));
-        }
+        
+        overllayControler.DrawMoveOverllay(PosibleMoves());
     }
 }
