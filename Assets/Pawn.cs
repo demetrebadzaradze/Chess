@@ -13,7 +13,7 @@ public class Pawn : Piece
     {
         foreach (Vector2Int posibleMove in PosibleMoves())
         {
-            if (newPos == position + posibleMove)
+            if (newPos == posibleMove)
             {      
                 moveCount++;
 
@@ -30,7 +30,7 @@ public class Pawn : Piece
 
         if (!IsSquereOcupied(position + MoveBasedOnCoulor(new Vector2Int(0, 1))))
         {
-            moves.Add(MoveBasedOnCoulor(new Vector2Int(0, 1)));
+            moves.Add(MoveBasedOnCoulor(new Vector2Int(0, 1) + position));
         }
 
 
@@ -39,7 +39,7 @@ public class Pawn : Piece
         {
             if (!IsSquereOcupied(position + MoveBasedOnCoulor(new Vector2Int(0, 2))))
             {
-                moves.Add(MoveBasedOnCoulor(new Vector2Int(0, 2)));
+                moves.Add(MoveBasedOnCoulor(new Vector2Int(0, 2) + position ));
             }
         }
 

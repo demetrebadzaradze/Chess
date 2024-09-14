@@ -13,6 +13,7 @@ public abstract class Piece //: MonoBehaviour
     public PieceName Name;
     public PieceColor Color;
     public Vector2Int position;
+    public bool overllayIsDisplayed = false;
 
     public Piece(Vector2Int pos, PieceColor color, PieceName name)
     {
@@ -27,7 +28,7 @@ public abstract class Piece //: MonoBehaviour
     }
     public virtual List<Vector2Int> PosibleMoves()
     {
-        return new List<Vector2Int>{};
+        return new List<Vector2Int> { };
     }
     public bool IsAValidTurn()
     {
@@ -39,24 +40,31 @@ public abstract class Piece //: MonoBehaviour
     }
     public void UpdatePosition(Vector2Int newPosition)
     {
-        position = newPosition;   
+        position = newPosition;
     }
     protected bool IsSquereOcupied(Vector2Int pos)
     {
-        if(GameManager.squeres[pos.x,pos.y].ocupied)
+        if (GameManager.squeres[pos.x, pos.y].ocupied)
         {
             return true;
         }
         return false;
-    }  
+    }
     void Start()
     {
         //  posibleMoveOverlay = Resources.Load("PosbleMoveOverlay") as GameObject;
     }
     public void DrawPosibleMoves()
     {
-        Debug.Log("drawing positions");
-        
-        overllayControler.DrawMoveOverllay(PosibleMoves());
+        if (overllayControler.moveOverllays.Count < PosibleMoves().Count)
+        {
+            overllayControler.DrawMoveOverllay(PosibleMoves());
+            overllayIsDisplayed = true;
+        }
+    }
+    public void DestroyMoveOverlays()
+    {
+        overllayControler.EraceAllOverllays();
+        overllayIsDisplayed = false;
     }
 }

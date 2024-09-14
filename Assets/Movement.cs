@@ -35,7 +35,6 @@ public class Movement : MonoBehaviour
     }
     void Update()
     {
-        GameManager.PrintTheTurn();
         if (isBeingHeld)
         {
             Vector3 mousePos;
@@ -48,6 +47,12 @@ public class Movement : MonoBehaviour
 
     private void OnMouseDown()
     {
+        // Debug.Log(Input.GetMouseButtonDown(1) == true);
+        // if (Input.GetMouseButtonDown(1))
+        // {
+        //     Debug.Log("destried overlayes or no???");
+        //     piece.DestroyMoveOverlays();
+        // }
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 mousePos;
@@ -58,7 +63,9 @@ public class Movement : MonoBehaviour
 
             isBeingHeld = true;
 
-            piece.DrawPosibleMoves();
+            DrawOrEracePosibleOverllays();
+
+            // piece.DrawPosibleMoves();
         }
     }
     private void OnMouseUp()
@@ -137,7 +144,21 @@ public class Movement : MonoBehaviour
             Debug.LogError("curent position of that piece is (-1, -1)");
         }
     }
+    private void DrawOrEracePosibleOverllays()
+    {
+        if (piece.overllayIsDisplayed)
+        {
+            piece.DestroyMoveOverlays();
+            
+        }
+        else
+        {        
+            piece.DrawPosibleMoves();
+        }
+    }
 }
+
+
 
 
 /*
